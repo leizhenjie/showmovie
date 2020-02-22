@@ -1,0 +1,90 @@
+{% csrf_token %}
+{#<script type="text/javascript" src="../../static/js/jquery.min.js"></script>#}
+<div class="top">
+    <div class="w">
+        <span>欢迎来到秀movie,www.xiumovie.com最专业的剧情介绍网站</span>
+    </div>
+    {% if request.user.is_authenticated %}
+        <div class="log" style="font-family: 华文行楷"><span>欢迎您,</span><span
+                style="color: blue; margin-right: 10px">{{ request.user }}</span><span>|</span><a
+                href="{% url 'accounts:logout' %}" onclick="logout()"
+        ><span
+                style="margin-left: 10px">退出登录</span></a></div>
+    {% else %}
+        <div class="log"><a href="" id="login" onclick="login();"><span>登录</span></a><span>/</span><a
+                href="{% url 'accounts:register' %}"><span>注册</span></a></div>
+    {% endif %}
+</div>
+<div id="header">
+    <div class="w">
+        <div class="logo">
+            <a href="{% url 'index' %}" title="首页-爱影评,电视剧情网">秀movie</a>
+        </div>
+        <div id="search">
+            <div class="ser">
+                <form action="{% url 'search' %}" method="post" name="searchform" id="searchform">
+                    {% csrf_token %}
+                    <input type="text" id="kw" name="keyboard" class="search-input" value="请在此处输入影片片名或演员名称。"
+                           onfocus="if(this.value=='请在此处输入影片片名或演员名称。'){this.value='';}"
+                           onblur="if(this.value==''){this.value='请在此处输入影片片名或演员名称。';};"/>
+                    <input type="submit" name="submit" class="sub" value=""/>
+                    <input type="hidden" name="show" value="title,player"/>
+                    <input type="hidden" name="tempid" value="1"/>
+                    <input type="hidden" name="tbname" value="movie"/>
+                </form>
+            </div>
+            <p>热门搜索：<a href="" target="_blank"></a></p>
+        </div>
+        <p class="plus"><a href="{% url 'rank_list' %}" class="ph">排行榜</a><a href="{% url 'news' %}"
+                                                                             class="dq">今日新闻</a><a
+                href="javascript:void(0)" rel="nofollow" id="addFavorite" class="sc">收藏我们</a></p>
+    </div>
+    <button type="button" id="light" class="light" style="margin-top: 22.5px;">关灯</button>
+</div>
+{#<div class="menu">#}
+{#    <div class="w">#}
+{#        <a href="index.html" title="爱影评,电视剧情网">首页</a>#}
+{#        <a href="search_detail.html">电视剧剧情</a>#}
+{#        <a href="search_detail.html">电影剧情</a>#}
+{#        <a href="search_detail.html">动漫剧情</a>#}
+{#        <a href="search_detail.html" rel="nofollow">内地剧情</a>#}
+{#        <a href="search_detail.html" rel="nofollow">港台剧情</a>#}
+{#        <a href="search_detail.html" rel="nofollow">日韩剧情</a>#}
+{#        <a href="search_detail.html" rel="nofollow">欧美剧情</a>#}
+{#        <a href="search_detail.html" rel="nofollow">泰印剧情</a>#}
+{#        <a href="stars.html">明星库</a>#}
+{#        <a href="news.html">影视动态</a>#}
+{#    </div>#}
+{#</div>#}
+<!--/header-->
+<script>
+    function login() {
+        var page = window.location.href;
+        console.log(page);
+        var next_page = "{% url 'accounts:login' %}?next=" + page;
+        {#console.log(next_page);#}
+        $("#login").attr("href", next_page)
+    }
+
+    function logout() {
+        var page = window.location.href;
+        console.log(page);
+        var next_page = "{% url 'accounts:login' %}?next=" + page;
+        {#console.log(next_page);#}
+        $("#login").attr("href", next_page)
+    }
+
+    $("#light").click(function () {
+        if (document.getElementById("light").className == "light") {
+            $("body").css("background", "black");
+            $("#light").removeClass("light");
+            $("#light").addClass("black");
+            document.getElementById("light").innerHTML = "开灯"
+        } else {
+            $("body").css("background", "white");
+            $("#light").removeClass("black");
+            $("#light").addClass("light");
+            document.getElementById("light").innerHTML = "关灯"
+        }
+    })
+</script>

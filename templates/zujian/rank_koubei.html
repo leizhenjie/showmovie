@@ -1,0 +1,29 @@
+<div class="side">
+            <div class="shot">
+                <div class="title">
+                    <h3>口碑榜</h3>
+                    <dl>
+                        <dd class="on">
+                            <a href="javascript:;">最新</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">推荐</a>
+                        </dd>
+                    </dl>
+                </div>
+                <p class="dyshot"><i>名称</i></p>
+                <div class="bd">
+                    <ul class="dis">
+                        {% for item in rank %}
+                            <li><a href="{% url 'movie_detail' item.k_id %}" target="_blank">{{ item.k_name }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                    <ul>
+                        {% for item in rank %}
+                            <li><a href="{% url 'movie_detail' item.p_id %}" target="_blank">{{ item.p_name }}</a></li>{% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!--/shot-->
+        </div>

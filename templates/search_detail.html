@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="referrer" content="never">
+    <title>搜索结果：{{ q }}</title>
+    <meta name="keywords" content="电视剧剧情,电视剧分集剧情介绍"/>
+    <meta name="description" content="全国热播电视剧剧情介绍，与电视剧分集剧情介绍信息,2015年贺岁电视剧全系列介绍，提前知晓故事情节！"/>
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet"/>
+    <meta http-equiv="x-ua-compatible" content="ie=7"/>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+</head>
+<body>
+{% include 'zujian/head.html' %}
+<div class="menu">
+    <div class="w">
+        <a href="index.html" titile="爱影评,电视剧情网">首页</a>
+        <a href="search_detail.html">电视剧剧情</a>
+        <a href="/movie/">电影剧情</a>
+        <a href="search_detail.html">动漫剧情</a>
+        <a href="search_detail.html" rel="nofollow">内地剧情</a>
+        <a href="search_detail.html" rel="nofollow">港台剧情</a>
+        <a href="search_detail.html" rel="nofollow">日韩剧情</a>
+        <a href="search_detail.html" rel="nofollow">欧美剧情</a>
+        <a href="search_detail.html" rel="nofollow">泰印剧情</a>
+        <a href="stars.html">明星库</a>
+        <a href="news.html">影视动态</a>
+    </div>
+</div>
+<div id="main">
+    <div class="banner">
+        <script src="{% static 'js/thea1.js' %}"></script>
+    </div>
+    <div class="cr"></div>
+    <div class="jq-list">
+        <div class="title">
+            <h1>搜索:{{ q }}</h1>
+        </div>
+        <ul class="blist">
+            {% for item in data %}
+
+            <li><a href="{% url 'movie_detail' item.id %}" class="p"><img src="{{ item.img }}" alt=""/></a>
+                <div class="info">
+                    <h2><a href="{% url 'movie_detail' item.id %}">{{ item.title }} </a> / <em>{{ item.type }} </em><span></span>
+                    </h2>
+                    <p class="z"><span>名称:</span>{{ item.sub_title }}</p>
+                    <p class="desc"><span>上映时间:</span>{{ item.year }}</p>
+                </div>
+            </li>{% endfor %}
+        </ul>
+
+    </div>
+    <!--/jq-list-->
+    <div class="jq-side">
+        {% include 'zujian/rank_xinpian.html' %}
+        <!--/shot-->
+        <div class="a300">
+            <script src="{% static 'js/thea2.js' %}"></script>
+        </div>
+        {% include 'zujian/rank_koubei.html' %}
+        <!--/shot-->
+        <div class="a300">
+            <script src="{% static 'js/thea3.js' %}"></script>
+        </div>
+        <script>jQuery(".jq-side .shot").slide({titCell: "dd", mainCell: ".bd", delayTime: 10});</script>
+    </div>
+</div>
+<!--/footer-->
+{% include 'zujian/footer.html' %}
+</body>
+</html>

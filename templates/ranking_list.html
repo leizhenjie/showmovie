@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>排行榜</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet"/>
+    <meta http-equiv="x-ua-compatible" content="ie=7"/>
+    <script type="text/javascript" src="../static/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+</head>
+<style>
+    #movie {
+        display: none;
+    }
+</style>
+<body>
+{% include 'zujian/head.html' %}
+<!--/header-->
+<div id="main">
+    <div class="banner">
+        <script src="../static/js/thea1.js"></script>
+    </div>
+    <div class="toplist">
+        <div class="pside">
+            <ul>
+                <div class="title">
+                    分类检索
+                </div>
+                <li class="curr" id="tv_rank"><a onclick="checkout2()">中国大陆影视剧排行榜</a></li>
+                <li id="movie_rank"><a onclick="checkout1()">经典电影排行榜</a></li>
+            </ul>
+            <div class="sidead">
+                <script src="../static/js/thea4.js"></script>
+            </div>
+        </div>
+        <div class="hotcon A">
+            <div class="htitle">
+                <h3>中国大陆影视剧排行榜</h3>
+            </div>
+            <div class="hotbox hotlist">
+                <p class="bti">
+                    <s>
+                        排名
+                    </s><em>名称</em><em class="mx">明星</em></p>
+                <ul>
+                    {% for i,j in d.items %}
+                        <li>
+                            {% for x,y in j.items %}
+                                <em>{{ x }}</em>
+                                <i class="on"></i>
+                                <a href="{% url 'movie_detail' y %}" target="_blank">{{ i }}</a>
+                            {% endfor %}
+                        </li>
+                    {% endfor %}
+                    <div class="cr"></div>
+                </ul>
+            </div>
+            <!--/hotbox-->
+        </div>
+
+        <div class="hotcon B" id="movie">
+            <div class="htitle">
+                <h3>经典电影排行榜</h3>
+            </div>
+            <div class="hotbox hotlist">
+                <p class="bti">
+                    <s>
+                        排名
+                    </s><em>名称</em><em class="mx">明星</em></p>
+                <ul>
+                    {% for i,j in q.items %}
+                        <li>
+                            {% for x,y in j.items %}
+                                <em>{{ x }}</em>
+                                <i class="on"></i>
+                                <a href="{% url 'movie_detail' y %}" target="_blank">{{ i }}</a>
+                            {% endfor %}
+                        </li>
+                    {% endfor %}
+                    <div class="cr"></div>
+                </ul>
+
+                <!--/hotbox-->
+            </div>
+        </div>
+        <div class="cr"></div>
+    </div>
+</div>
+<script>
+    function checkout1() {
+        $(".A").attr('id', 'movie');
+        $(".B").attr('id', '');
+        $("#tv_rank").removeClass('curr');
+        $("#movie_rank").addClass('curr')
+    }
+
+    function checkout2() {
+        $(".B").attr('id', 'movie');
+        $(".A").attr('id', '');
+        $("#movie_rank").removeClass('curr');
+        $("#tv_rank").addClass('curr')
+    }
+</script>
+<!--/footer-->
+{% include 'zujian/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title id="titles"></title>
+    <meta name="referrer" content="never">
+    <meta name="keywords" content=""/>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://api.douban.com/v2/movie/subject/" + {{ id }} +"?apikey=0df993c66c0c636e29ecbb5344252a4a",
+                dataType: "jsonp",
+                success: function (data) {
+                    {#console.log(data);#}
+                    document.getElementById("titles").innerText = data.title;
+                    document.getElementById("title").innerText = data.title;
+                    document.getElementById("poster").src = data.images.small;
+                    document.getElementById("subtype").innerText = data.subtype;
+                    document.getElementById("director").innerText = data.directors[0].name;
+                    document.getElementById("writer").innerText = data.writers[0].name;
+                    document.getElementById("zhuyan").innerText = casts(data);
+                    document.getElementById("type").innerText = data.genres.slice(0, -1);
+                    document.getElementById("country").innerText = data.countries;
+                    document.getElementById("lang").innerText = data.languages.slice(0);
+                    document.getElementById("pubdate").innerText = data.pubdates;
+                    document.getElementById("longtime").innerText = data.durations;
+                    document.getElementById("smalltext").innerText = data.summary;
+                    document.getElementById("alltext").innerText = data.summary;
+
+                    function casts(data) {
+                        var li = [];
+                        {#console.log(data.casts.length);#}
+                        for (var i = 0; i < data.casts.length; i++) {
+                            li.push(data.casts[i].name)
+                        }
+                        {#console.log(li);#}
+                        return li
+                    }
+                },
+                error: function () {
+                    alert("error")
+                }
+            });
+            content_em = $("#comment_list");
+            $.ajax({
+                url: '/apis/other_answer/{{ id }}/',
+                type: 'GET',
+                success: function (data) {
+                    if (data) {
+                        content_em.html(data);
+                    } else {
+                        content_em.html("暂无参考答案");
+                    }
+                },
+                error: function () {
+                    content_em.html("加载失败，请联系管理员！");
+                }
+            });
+
+        });
+    </script>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet"/>
+    <meta http-equiv="x-ua-compatible" content="ie=7"/>
+    <link href="../static/css/bootstrap.min.css">
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
+
+</head>
+<body>
+{% include 'zujian/head.html' %}
+<div id="main">
+    <div class="moviehead">
+        <h1 id="title"></h1>
+        <span id="subtype"></span>
+
+    </div>
+    <div class="endpage">
+        <div class="col">
+            <div class="page-info">
+                <div class="pic">
+                    <img src="" alt="" id="poster"/>
+                    <h2>{{ title }}</h2>
+                </div>
+                <ul>
+                    <li> 导演: <span id="director"></span></li>
+                    <li> 编剧: <span id="writer"></span></li>
+                    <li> 主演: <span id="zhuyan"></span>
+                    </li>
+                    <li> 类型: <span id="type"></span></li>
+                    <li> 制片国家/地区: <span id="country"></span></li>
+                    <li> 语言: <span id="lang"></span></li>
+                    <li> 上映日期: <span id="pubdate"></span></li>
+                    <li> 片长: <span id="longtime"></span></li>
+                </ul>
+            </div>
+            <div class="btitle">
+                <h3>影片简介<i></i></h3>
+            </div>
+            <div id="endtext">
+                <div class="smalltext" id="smalltext">
+
+                </div>
+                <div class="alltext" id="alltext">
+                    <p>
+
+                    </p>
+                </div>
+                <a href="javascript:;" rel="nofollow" class="mmore" style="color:#0070BA">详细介绍</a>
+            </div>
+            {#            <div class="btitle">#}
+            {#                <h3>剧情列表<i></i></h3>#}
+            {#            </div>#}
+            {#            <div class="playlist">#}
+            {#                <a href="detail_diversity.html" target="_blank">第1-2集</a>#}
+            {#                <a href="/juqing/2664.html" target="_blank">第3-4集</a>#}
+            {#                <a href="/juqing/2665.html" target="_blank">第5-6集</a>#}
+            {#            </div>#}
+            <div class="stills">
+                <ul>
+                    {% for key,value in data.items %}
+                        <li><a href="javascript:;" target="_blank"><img src="{{ value }}"/>
+                            <p>{{ key }}</p></a></li>{% endfor %}
+                </ul>
+            </div>
+            <div class="a660">
+                <script src="../static/js/thea7.js"></script>
+            </div>
+            <div class="btitle" id="comment">
+                <h3>在线评论<i></i></h3>
+                <p>参与评论<em id="plnumshowdiv">{{ num }}</em>条</p>
+            </div>
+            <div class="comment">
+                <div class="plpost">
+                    <script>
+                        function CheckPl(obj) {
+                            if (obj.saytext.value == "") {
+                                alert("您没什么话要说吗？");
+                                obj.saytext.focus();
+                                return false;
+                            }
+                            return true;
+                        }
+                    </script>
+                    <form method="post" name="saypl" id="saypl"
+                          onsubmit="return CheckPl(document.saypl)">
+                        <textarea name="comment" id="saytext" onclick="checklog();"></textarea>
+                        <div class="pluser">
+                            <button id="sub" type="button" name="submit" class="btn">发表评论</button>
+                        </div>
+                    </form>
+                </div>
+                <script>
+                    $("#sub").click(function () {
+                        CheckPl(document.saypl);
+                        $.ajax({
+                            url: "{% url 'movie_detail' id %}",
+                            type: "POST",
+                            data: $("#saypl").serialize(),
+                            datatype: "json",
+                            success: function (result) {
+                                if (result.status == 200) {
+                                    alert(result.msg);
+                                    location.reload()
+                                } else {
+                                    alert(result.msg)
+                                }
+                            },
+                            beforeSend: function (xhr, settings) {
+                                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                            }
+                        })
+
+                    })
+                </script>
+                <div class="moviepl" id="pllist">
+                    <div id="comment_list">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/col-->
+        <div class="jq-side">
+            {% if request.user.is_authenticated %}
+                {% include 'pingfen.html' %}
+            {% endif %}
+            <div class="a300">
+                <script src="../static/js/thea2.js"></script>
+            </div>
+            <!--/shot-->
+            {% include 'zujian/rank_xinpian.html' %}
+            <!--/shot-->
+            <div class="a300">
+                <script src="../static/js/thea3.js"></script>
+            </div>
+            <div class="a300">
+                <script src="../static/js/thea6.js"></script>
+            </div>
+
+            <script>jQuery(".jq-side .shot").slide({titCell: "dd", mainCell: ".bd", delayTime: 10});</script>
+        </div>
+        <!--/jq-side-->
+    </div>
+    <!--/endpage-->
+</div>
+<!--/footer-->
+{% include 'zujian/footer.html' %}
+<script>i = 1;
+jQuery(function () {
+    $(".mmore").click(function () {
+        if (i % 2 != 0) {
+            $(".alltext").fadeIn("slow");
+            $(".smalltext").hide();
+            $(".mmore").html("收起更多>>");
+            i++;
+        } else {
+            $(".alltext").fadeOut("slow");
+            $(".smalltext").show();
+            $(".mmore").html("查看更多>>");
+            i++;
+        }
+    });
+});
+</script>
+{#<script src="/e/extend/comment/?classid=1&amp;id=474"></script>#}
+{#<script src="/e/public/ViewClick/ViewMore.php?classid=1&amp;id=474&amp;onclick=1&amp;pfen=1&amp;diggtop=1&amp;addclick=1"></script>#}
+</body>
+</html>

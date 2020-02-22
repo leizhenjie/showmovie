@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="icon" href="data:;base64,=">
+    {#    <title>jquery星级评分特效制作视频网站评论打分效果</title>#}
+    {#    <meta name="description" content="jquery星级评论评分特效制作电影媒体视频网站评论打分效果，鼠标滑过星星显示评论打分内容。jquery下载。"/>#}
+</head>
+
+<body>
+<style type="text/css">
+    .score * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .score a, img {
+        border: 0;
+    }
+
+    .score {
+        background: #fff;
+        font: 12px "宋体", Arial;
+        color: #A1A1A1;
+    }
+
+    /* score */
+    .score {
+        position: relative;
+        width: 140px;
+        height: 240px;
+        border: solid 1px #ddd;
+        padding: 10px;
+        margin: 100px auto 0 auto;
+    }
+
+    /*.score_loading{background:url(../static/images/loading_s.gif) center no-repeat;width:140px;height:190px;}*/
+    .score_content {
+        height: 190px;
+    }
+
+    .score_avg span {
+        position: relative;
+        font-size: 42px;
+        font-weight: bold;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-style: italic;
+        color: #FFF;
+        letter-spacing: -4px;
+    }
+
+    .score_avg span em {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        color: #FFF;
+        z-index: 10;
+    }
+
+    .score_avg span i {
+        position: absolute;
+        top: 2px;
+        left: 12px;
+        color: #069;
+        z-index: 8;
+    }
+
+    .score_avg {
+        height: 64px;
+        width: 80px;
+        display: block;
+        background: url(../static/images/_score_bg.gif) 0 0 no-repeat;
+        position: absolute;
+        top: -10px;
+        left: -20px;
+        padding-top: 16px;
+    }
+
+    .score_total {
+        color: #666;
+        line-height: 1.4em;
+        height: 50px;
+        padding-left: 54px;
+        padding-top: 20px;
+    }
+
+    .score_total span {
+        color: #F00;
+        font-weight: bold;
+    }
+
+    .score_list li {
+        line-height: 23px;
+        color: #666;
+    }
+
+    .score_list li span {
+        display: inline-block;
+        width: 30px;
+    }
+
+    .score_list li em {
+        font-style: normal;
+    }
+
+    .score_list li i {
+        display: inline-block;
+        border: 1px solid #FC6;
+        background-color: #FFC;
+        height: 8px;
+        font-size: 0px;
+    }
+
+    .score_post {
+        position: relative;
+    }
+
+    /* starBox */
+    .starBox {
+        position: relative;
+        width: 130px;
+    }
+
+    .starlist {
+        height: 26px;
+        position: relative;
+        width: 130px;
+        overflow: hidden;
+        background: url(../static/images/stars.gif) 0 0 repeat-x;
+        cursor: pointer
+    }
+
+    .starlist li {
+        float: left;
+    }
+
+    .starlist li a {
+        display: block;
+        width: 26px;
+        height: 26px;
+        overflow: hidden;
+        text-indent: -9999px;
+        position: absolute;
+        z-index: 5;
+    }
+
+    .starlist li a:hover {
+        background: url(../static/images/stars.gif) 0 -100px;
+        z-index: 3;
+        left: 0;
+    }
+
+    .starlist a.star_one {
+        left: 0;
+    }
+
+    .starlist a.star_one:hover {
+        width: 26px;
+    }
+
+    .starlist a.star_two {
+        left: 26px;
+    }
+
+    .starlist a.star_two:hover {
+        width: 52px;
+    }
+
+    .starlist a.star_three {
+        left: 52px;
+    }
+
+    .starlist a.star_three:hover {
+        width: 78px;
+    }
+
+    .starlist a.star_four {
+        left: 78px;
+    }
+
+    .starlist a.star_four:hover {
+        width: 104px;
+    }
+
+    .starlist a.star_five {
+        left: 104px;
+    }
+
+    .starlist a.star_five:hover {
+        width: 130px;
+    }
+
+    .star_current_rating {
+        background: url(../static/images/stars.gif) 0 -50px;
+        position: absolute;
+        height: 26px;
+        z-index: 6;
+        top: 29px;
+        left: 0
+    }
+
+    .star_title {
+        line-height: 21px;
+        background-color: #F6F6F6;
+        border-top: 1px solid #F0F0F0;
+        border-bottom: 1px solid #F0F0F0;
+        margin-bottom: 6px;
+        width: 130px;
+    }
+
+    /* star_tip */
+    .star_tip {
+        border: 1px solid #F90;
+        background-color: #FFC;
+        height: 21px;
+        width: 130px;
+        top: -2px;
+        left: 0;
+        position: absolute;
+        line-height: 21px;
+        display: none;
+    }
+
+    .star_tip s {
+        position: absolute;
+        top: 22px;
+        left: 8px;
+        display: block;
+        width: 0px;
+        height: 0px;
+        font-size: 0px;
+        line-height: 0px;
+        border-color: #F90 transparent transparent transparent;
+        border-style: solid dashed dashed dashed;
+        border-width: 6px;
+    }
+
+    .star_tip s i {
+        position: absolute;
+        top: -7px;
+        left: -6px;
+        display: block;
+        width: 0px;
+        height: 0px;
+        font-size: 0px;
+        line-height: 0px;
+        border-color: #FFC transparent transparent transparent;
+        border-style: solid dashed dashed dashed;
+        border-width: 6px;
+    }
+
+    .star_desc {
+        text-align: center;
+    }
+</style>
+
+<script type="text/javascript" src="../static/js/jquery-1.4.2.min.js"></script>
+<script>var star = {vid: '1498', vt: 'jsfoot 网页特效'};</script>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id="csrf"/>
+<input type="hidden" id="idid" value="{{ id }}"/>
+<div class="score" style="margin-top: 0px">
+
+    <div class="score_content" id="score_content">
+        <!-- <div class="score_loading"></div> -->
+
+    </div><!--score_content end-->
+
+    <div class="score_post">
+
+        <div id="starBox">
+            <div class="star_title">给喜欢的影片评分</div>
+            <ul class="starlist" id="starlist">
+                <li i="1"><a href="javascript:void(0);" title="1星" class="star_one">1</a></li>
+                <li i="2"><a href="javascript:void(0);" title="2星" class="star_two">2</a></li>
+                <li i="3"><a href="javascript:void(0);" title="3星" class="star_three">3</a></li>
+                <li i="4"><a href="javascript:void(0);" title="4星" class="star_four">4</a></li>
+                <li i="5"><a href="javascript:void(0);" title="5星" class="star_five">5</a></li>
+            </ul>
+            <div class="star_current_rating" id="star_current_rating"></div>
+        </div><!--starBox end-->
+
+        <div class="star_tip" id="star_tip">
+            <s id="star_tip_arrow"><i></i></s>
+            <div id="star_desc" class="star_desc"></div>
+        </div><!--star_tip end-->
+
+    </div><!--score_post end-->
+
+</div><!--score end-->
+
+<script type="text/javascript" src="../static/js/score.js"></script>
+
+</body>
+</html>

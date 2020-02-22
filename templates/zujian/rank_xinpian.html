@@ -1,0 +1,22 @@
+<div class="side">
+    <div class="shot">
+        <div class="title">
+            <h3>新片榜</h3>
+            <dl>
+                <dd class="on">
+                    <a href="javascript:;">最新</a>
+                </dd>
+            </dl>
+        </div>
+        <p class="dyshot"><i>名称</i></p>
+        <div class="bd">
+            <ul class="dis">
+                {% for item in rank %}
+                    <li><a href="{% url 'movie_detail' item.x_id %}" target="_blank">{{ item.x_name }}</a>
+                    </li>{% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!--/shot-->
+
+</div>

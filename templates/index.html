@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    {% csrf_token %}
+    <meta charset="utf-8"/>
+    <meta name="referrer" content="never">
+    <title>首页</title>
+    <meta name="keywords" content="电视剧剧情,电视剧剧情介绍,电影剧情介绍"/>
+    <meta name="description"
+          content="秀movie致力打造最新电视剧电影剧情介绍的剧情介绍网站"/>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet"/>
+    <meta http-equiv="x-ua-compatible" content="ie=7"/>
+    <script type="text/javascript" src="../static/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+</head>
+<body>
+
+{% include 'zujian/head.html' %}
+
+<div class="focusBox" style="margin:0 auto">
+    <div class="w">
+        {#        轮播图#}
+        <ul class="pic">
+            {% for item in lunbo %}
+                <li><a href="{{ item.detail_url }}" target="_blank"><img src="{{ item.image }}" alt=""/></a></li>
+            {% endfor %}
+
+        </ul>
+        <div class="txt-bg"></div>
+        <ul class="num">
+            {% for item in lunbo %}
+                <li class="on"><a href="{{ item.detail_url }}" target="_blank"><img
+                        src="{{ item.image }}"/></a></li>{% endfor %}
+
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(".focusBox").slide({
+        titCell: ".num li", mainCell: ".pic", effect: "fold", autoPlay: true,
+        startFun: function (i) {
+            jQuery(".focusBox .txt li").eq(i).animate({"bottom": 0}).siblings().animate({"bottom": -56});
+        }
+    });
+</script>
+<div id="main">
+    <div class="banner">
+        <script src="../static/js/thea1.js"></script>
+    </div>
+    <div class="box">
+        <div class="content">
+            <div class="title">
+                <h1><a href="search_detail.html">电视剧剧情</a></h1>
+                <dl>
+                    <dd>
+                        <a>推荐</a>
+                    </dd>
+                    <dd>
+                        <a>美剧</a>
+                    </dd>
+                    <dd>
+                        <a>韩剧</a>
+                    </dd>
+                    <dd>
+                        <a>国产剧</a>
+                    </dd>
+                    <dd>
+                        <a>港剧</a>
+                    </dd>
+                    <dd>
+                        <a>日本动画</a>
+                    </dd>
+                    <dd>
+                        <a>纪录片</a>
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="bd clearfix">
+                <ul class="img-list dis clearfix">
+                    {% for item in t_re_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list dis clearfix">
+                    {% for item in t_meiju_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list dis clearfix">
+                    {% for item in t_hanju_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list dis clearfix">
+                    {% for item in t_guochan_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list dis clearfix">
+                    {% for item in t_gangju_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list dis clearfix">
+                    {% for item in t_riben_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list dis clearfix">
+                    {% for item in t_jilu_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+
+            </div>
+        </div>
+        {% include 'zujian/rank_xinpian.html' %}
+        <div class="cr"></div>
+    </div>
+    <!--/box-->
+    <div class="box">
+        <div class="content">
+            <div class="title">
+                <h2><a href="search_detail.html">最近热门电影</a></h2>
+                <dl>
+                    <dd>
+                        <a href="">热门</a>
+                    </dd>
+                    <dd>
+                        <a href="">最新</a>
+                    </dd>
+                    <dd>
+                        <a href="">动作</a>
+                    </dd>
+                    <dd>
+                        <a href="">喜剧</a>
+                    </dd>
+                    <dd>
+                        <a href="">爱情</a>
+                    </dd>
+                    <dd>
+                        <a href="">科幻</a>
+                    </dd>
+                    <dd>
+                        <a href="">悬疑</a>
+                    </dd>
+                    <dd>
+                        <a href="">恐怖</a>
+                    </dd>
+                    <dd>
+                        <a href="">动画</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="bd clearfix">
+
+                <ul class="img-list dis clearfix">
+                    {% for item in remen_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}"
+                               data-id="{{ item.id }}"
+                               id="hot_movie"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }} </a></b>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in zuixin_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <ul class="img-list clearfix">
+                    {% for item in dongzuo_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in xiju_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in aiqing_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in kehuan_info %}
+                        <li><a class="play-img" href="{{ item.url }}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{{ item.url }}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in xuanyi_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{% url 'movie_detail' item.id %}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in kongbu_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+
+                </ul>
+                <ul class="img-list clearfix">
+                    {% for item in donghua_info %}
+                        <li><a class="play-img" href="{% url 'movie_detail' item.id %}" target="_blank"><img
+                                src="{{ item.cover }}" alt=""/></a><b><a
+                                href="{% url 'movie_detail' item.id %}" target="_blank">{{ item.title }}</a></b>
+                        </li>{% endfor %}
+
+                </ul>
+            </div>
+        </div>
+        {% include 'zujian/rank_koubei.html' %}
+        <div class="cr"></div>
+    </div>
+    <!--/box-->
+    <!--/box-->
+    <div class="box">
+        <div class="content">
+            <div class="title">
+                <h2><a href="news.html">影视动态</a></h2>
+                <p><a href="news.html">更多&gt;&gt;</a></p>
+            </div>
+            <ul class="new-list">
+                {% for item in news %}
+                    <li><span>{{ item.create_date }}</span><a href="{{ item.n_url }}" target="_blank"
+                                                              title="{{ item.n_title }}">{{ item.n_title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="side">
+            <div class="shot">
+                <div class="title">
+                    <h3>新闻排行榜</h3>
+                    <dl>
+                        <dd class="on">
+                            <a href="#">热门</a>
+                        </dd>
+                    </dl>
+                </div>
+                <p class="dyshot"><i>名称</i><span>发布时间</span></p>
+                <div class="bd">
+                    <ul class="dis">
+                        {% for item in rank_news %}
+                            <li><span>{{ item.create_date }}</span><a href="{{ item.rank_news_url }}" target="_blank"
+                                                                      title="{{ item.rank_news_title }}">{{ item.rank_news_title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!--/shot-->
+        </div>
+        <div class="cr"></div>
+    </div>
+    <!--/box-->
+    <!--/box-->
+    <div class="banner mt10">
+        <script src="../static/js/thea5.js"></script>
+    </div>
+</div>
+<!--/footer-->
+{% include 'zujian/footer.html' %}
+<script type="text/javascript" src="../static/js/index.js"></script>
+</body>
+</html>

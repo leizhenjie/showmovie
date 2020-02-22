@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>剧集评价</title> 
+  <meta name="keywords" content="" /> 
+  <meta name="description" content="爱情宝典" /> 
+  <link href="../static/css/style.css" type="text/css" rel="stylesheet" />
+  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
+  <script type="text/javascript" src="../static/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="../static/js/common.js"></script>
+  <script type="text/javascript" src="../static/js/ajax.js"></script>
+ </head> 
+ <body> 
+  <div class="top"> 
+   <div class="w"> 
+    <span>欢迎来到爱影评www.aiyingping.com最专业的剧情介绍网站</span> 
+   </div> 
+  </div> 
+  <div id="header"> 
+   <div class="w"> 
+    <div class="logo"> 
+     <a href="index.html" title="首页-爱影评,电视剧情网">爱影评</a> 
+    </div> 
+    <div id="search"> 
+     <div class="ser"> 
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform"> 
+       <input type="text" id="kw" name="keyboard" class="search-input" value="请在此处输入影片片名或演员名称。" onfocus="if(this.value=='请在此处输入影片片名或演员名称。'){this.value='';}" onblur="if(this.value==''){this.value='请在此处输入影片片名或演员名称。';};" /> 
+       <input type="submit" name="submit" class="sub" value="" /> 
+       <input type="hidden" name="show" value="title,player" /> 
+       <input type="hidden" name="tempid" value="1" /> 
+       <input type="hidden" name="tbname" value="movie" /> 
+      </form> 
+     </div> 
+     <p>热门搜索：<a href="/e/search/result/?searchid=47" target="_blank">清潭洞丑闻</a>&nbsp;<a href="/e/search/result/?searchid=27" target="_blank">神雕侠侣</a>&nbsp;<a href="/e/search/result/?searchid=78" target="_blank">狎鸥亭白夜</a>&nbsp;<a href="/e/search/result/?searchid=19" target="_blank">二炮手</a>&nbsp;<a href="/e/search/result/?searchid=17" target="_blank">匹诺曹</a>&nbsp;<a href="/e/search/result/?searchid=168" target="_blank">小时代4</a><br /></p> 
+    </div> 
+    <p class="plus"><a href="ranking_list.html" class="ph">排行榜</a><a href="/new.html" class="dq">最近更新</a><a href="javascript:void(0)" rel="nofollow" id="addFavorite" class="sc">收藏我们</a></p> 
+   </div> 
+  </div> 
+  <div class="menu"> 
+   <div class="w"> 
+    <a href="index.html" titile="爱影评,电视剧情网">首页</a> 
+    <a href="search_detail.html">电视剧剧情</a>
+    <a href="/movie/">电影剧情</a> 
+    <a href="search_detail.html">动漫剧情</a>
+    <a href="search_detail.html" rel="nofollow">内地剧情</a>
+    <a href="search_detail.html" rel="nofollow">港台剧情</a>
+    <a href="search_detail.html" rel="nofollow">日韩剧情</a>
+    <a href="search_detail.html" rel="nofollow">欧美剧情</a>
+    <a href="search_detail.html" rel="nofollow">泰印剧情</a>
+    <a href="stars.html">明星库</a> 
+    <a href="news.html">影视动态</a> 
+   </div> 
+  </div> 
+  <div id="main"> 
+   <div class="location"> 
+    <h2>您当前的位置：<a href="index.html">爱影评电视剧情网</a>&nbsp;&gt;&nbsp;<a href="search_detail.html">电视剧</a> &gt; 爱情宝典 &gt; 剧情评价</h2>
+   </div> 
+   <div class="moviehead"> 
+    <h1>爱情宝典</h1> 
+    <span>电视剧</span> 
+    <div> 
+     <a href="detail_movie.html">剧情简介</a>
+     <a href="detail_diversity.html">分集剧情</a> 
+     <a href="detail_actors.html">演职员表</a> 
+     <a href="detail_playtime.html">播出时间</a> 
+     <a href="detail_comment.html" class="curr">剧集评价</a> 
+     <a href="detail_highlights.html">花絮</a> 
+    </div> 
+   </div> 
+   <div class="endpage"> 
+    <div class="col"> 
+     <div class="page-info"> 
+      <div class="pic"> 
+       <img src="../static/images/c1baa2b37f9915cecebe0ea5f88c62dd.jpg" alt="爱情宝典" />
+       <h2>电视剧爱情宝典</h2> 
+       <div class="fen"> 
+        <dl class="star-rating"> 
+         <dd class="current-rating star4"></dd> 
+         <dd> 
+          <a href="JavaScript:makeRequest('/e/enews/?enews=AddInfoPfen&amp;classid=1&amp;id=473&amp;doajax=1&amp;ajaxarea=pfenshowdiv&amp;fen=1','EchoReturnedText','GET','');" class="one-star">1</a> 
+         </dd> 
+         <dd> 
+          <a href="JavaScript:makeRequest('/e/enews/?enews=AddInfoPfen&amp;classid=1&amp;id=473&amp;doajax=1&amp;ajaxarea=pfenshowdiv&amp;fen=2','EchoReturnedText','GET','');" class="two-stars">2</a> 
+         </dd> 
+         <dd> 
+          <a href="JavaScript:makeRequest('/e/enews/?enews=AddInfoPfen&amp;classid=1&amp;id=473&amp;doajax=1&amp;ajaxarea=pfenshowdiv&amp;fen=3','EchoReturnedText','GET','');" class="three-stars">3</a> 
+         </dd> 
+         <dd> 
+          <a href="JavaScript:makeRequest('/e/enews/?enews=AddInfoPfen&amp;classid=1&amp;id=473&amp;doajax=1&amp;ajaxarea=pfenshowdiv&amp;fen=4','EchoReturnedText','GET','');" class="four-stars">4</a> 
+         </dd> 
+         <dd> 
+          <a href="JavaScript:makeRequest('/e/enews/?enews=AddInfoPfen&amp;classid=1&amp;id=473&amp;doajax=1&amp;ajaxarea=pfenshowdiv&amp;fen=5','EchoReturnedText','GET','');" class="five-stars">5</a> 
+         </dd> 
+        </dl> 
+        <p class="appfen"><span id="pfenshowdiv"><em>7</em>.2</span></p> 
+       </div> 
+       <!--/vstar--> 
+       <p>温馨提示：滑动星星可评分！</p> 
+      </div> 
+      <ul> 
+       <li>状态：大结局</li> 
+       <li>导演： 张多福,朱德承</li> 
+       <li>编剧： 邹静之</li> 
+       <li>主演： 范冰冰 乐珈彤 沈晓海 李解 </li> 
+       <li>又名： 爱情宝典 </li> 
+       <li>国家： 大陆 </li> 
+       <li>语言： 汉语普通话</li> 
+       <li>年份： 2001</li> 
+       <li>类别： <a href="/tv/list-1-0-0-0.html">言情</a> <a href="/tv/list-6-0-0-0.html">喜剧</a> <a href="/tv/list-8-0-0-0.html">古装</a> </li> 
+       <li>统计：共<span id="onclickshowdiv">339</span>次访问，关注<span id="diggtopshowdiv">0</span> 次</li> 
+       <li class="tg"><a href="JavaScript:makeRequest('/e/public/digg/?classid=1&amp;id=473&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggtopshowdiv','EchoReturnedText','GET','');">关注</a><a href="#comment">写评价</a><a href="/e/public/report/?classid=1&amp;id=473">报错</a><a href="javascript:;" onclick="copyurl('detail.html')">分享</a></li> 
+      </ul> 
+     </div> 
+     <div class="btitle" id="comment"> 
+      <h3>在线评论<i></i></h3> 
+      <p>参与评论<em id="plnumshowdiv">0</em>条</p> 
+     </div> 
+     <div class="comment"> 
+      <div class="plpost"> 
+       <script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script> 
+       <form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)"> 
+        <textarea name="saytext" id="saytext"></textarea> 
+        <div class="pluser"> 
+         <p id="pluser"><a href="/e/member/register/">注册</a> <a href="/e/member/login/">登录</a></p> 
+         <input type="submit" name="submit" class="btn" value="发表评论" /> 
+        </div> 
+        <input name="id" type="hidden" id="id" value="473" /> 
+        <input name="classid" type="hidden" id="classid" value="1" /> 
+        <input name="enews" type="hidden" id="enews" value="AddPl" /> 
+        <input name="repid" type="hidden" id="repid" value="0" /> 
+        <input type="hidden" name="ecmsfrom" value="9" /> 
+        <input name="nomember" type="hidden" id="nomember" value="1" /> 
+       </form> 
+      </div> 
+      <div class="moviepl" id="pllist">
+        加载中.... 
+      </div> 
+     </div> 
+     <div class="a660"> 
+      <script src="../static/js/thea7.js"></script>
+     </div> 
+    </div> 
+    <!--/col--> 
+    <div class="jq-side"> 
+     <div class="a300"> 
+      <script src="../static/js/thea2.js"></script>
+     </div> 
+     <div class="shot"> 
+      <div class="title"> 
+       <h3>其它人都在看</h3> 
+       <dl> 
+        <dd class="on"> 
+         <a href="javascript:;">最新</a> 
+        </dd> 
+        <dd> 
+         <a href="javascript:;">推荐</a> 
+        </dd> 
+       </dl> 
+      </div> 
+      <div class="bd nohotbg"> 
+       <ul class="tvlike"> 
+        <li><a href="detail_movie.html"><img src="../static/images/e5ca6e7126434af250ddc47b167ecfc4.jpg" alt="虎妈猫爸" /></a>
+         <div> 
+          <p><b><a href="detail_movie.html">虎妈猫爸</a></b>(2015)</p>
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((0条)</p> 
+          <p><span>关注</span>：(0人)</p> 
+          <p><a href="detail_movie.html" rel="nofollow">查看详情&gt;&gt;</a></p>
+         </div> </li> 
+        <li><a href="detail_movie.html"><img src="../static/images/c1baa2b37f9915cecebe0ea5f88c62dd.jpg" alt="爱情宝典" /></a>
+         <div> 
+          <p><b><a href="detail_movie.html">爱情宝典</a></b>(2001)</p>
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((3条)</p> 
+          <p><span>关注</span>：(0人)</p> 
+          <p><a href="detail_movie.html" rel="nofollow">查看详情&gt;&gt;</a></p>
+         </div> </li> 
+        <li><a href="/tv/472.html"><img src="../static/images/b25767a8c2b2b3316122f509668bb877.jpg" alt="听到传闻" /></a>
+         <div> 
+          <p><b><a href="/tv/472.html">听到传闻</a></b>(2015)</p> 
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((0条)</p> 
+          <p><span>关注</span>：(1人)</p> 
+          <p><a href="/tv/472.html" rel="nofollow">查看详情&gt;&gt;</a></p> 
+         </div> </li> 
+        <li><a href="/tv/469.html"><img src="../static/images/9a171e81f2a2e54ec1c14b7af11c60d2.jpg" alt="圈里圈外" /></a>
+         <div> 
+          <p><b><a href="/tv/469.html">圈里圈外</a></b>(2015)</p> 
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((1条)</p> 
+          <p><span>关注</span>：(0人)</p> 
+          <p><a href="/tv/469.html" rel="nofollow">查看详情&gt;&gt;</a></p> 
+         </div> </li> 
+       </ul> 
+       <ul class="tvlike"> 
+        <li><a href="detail_movie.html"><img src="../static/images/e5ca6e7126434af250ddc47b167ecfc4.jpg" alt="虎妈猫爸" /></a>
+         <div> 
+          <p><b><a href="detail_movie.html">虎妈猫爸</a></b>(2015)</p>
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((0条)</p> 
+          <p><span>关注</span>：(0人)</p> 
+          <p><a href="detail_movie.html" rel="nofollow">查看详情&gt;&gt;</a></p>
+         </div> </li> 
+        <li><a href="/tv/472.html"><img src="../static/images/b25767a8c2b2b3316122f509668bb877.jpg" alt="听到传闻" /></a>
+         <div> 
+          <p><b><a href="/tv/472.html">听到传闻</a></b>(2015)</p> 
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((0条)</p> 
+          <p><span>关注</span>：(1人)</p> 
+          <p><a href="/tv/472.html" rel="nofollow">查看详情&gt;&gt;</a></p> 
+         </div> </li> 
+        <li><a href="/tv/461.html"><img src="../static/images/7663583a92e8a8f3e4169b779c50b63e.jpg" alt="嘿！真不是闹着玩的" /></a>
+         <div> 
+          <p><b><a href="/tv/461.html">嘿！真不是闹着玩的</a></b>(2015)</p> 
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((0条)</p> 
+          <p><span>关注</span>：(4人)</p> 
+          <p><a href="/tv/461.html" rel="nofollow">查看详情&gt;&gt;</a></p> 
+         </div> </li> 
+        <li><a href="/tv/429.html"><img src="../static/images/b3cbe1998c9bbfd788aef0a468c87617.jpg" alt="相爱穿梭千年" /></a>
+         <div> 
+          <p><b><a href="/tv/429.html">相爱穿梭千年</a></b>(2015)</p> 
+          <p><span>剧情：</span>(大结局)</p> 
+          <p><span>评论</span>：((0条)</p> 
+          <p><span>关注</span>：(2人)</p> 
+          <p><a href="/tv/429.html" rel="nofollow">查看详情&gt;&gt;</a></p> 
+         </div> </li> 
+       </ul> 
+      </div> 
+     </div> 
+     <!--/shot--> 
+     <div class="shot"> 
+      <div class="title"> 
+       <h3>电视剧排行榜</h3> 
+       <dl> 
+        <dd class="on"> 
+         <a href="javascript:;">最新</a> 
+        </dd> 
+        <dd> 
+         <a href="javascript:;">推荐</a> 
+        </dd> 
+       </dl> 
+      </div> 
+      <p class="dyshot"><i>名称</i><span>更新集数</span></p> 
+      <div class="bd"> 
+       <ul class="dis"> 
+        <li><span>大结局</span><a href="detail_movie.html" target="_blank">虎妈猫爸</a></li>
+        <li><span>大结局</span><a href="detail_movie.html" target="_blank">爱情宝典</a></li>
+        <li><span>大结局</span><a href="/tv/472.html" target="_blank">听到传闻</a></li> 
+        <li><span>大结局</span><a href="/tv/469.html" target="_blank">圈里圈外</a></li> 
+        <li><span>大结局</span><a href="/tv/468.html" target="_blank">龙汇镖局之大宋女镖师</a></li> 
+        <li><span>大结局</span><a href="/tv/467.html" target="_blank">失宠王妃之结缘</a></li> 
+        <li><span>大结局</span><a href="/tv/466.html" target="_blank">神机妙算刘伯温</a></li> 
+        <li><span>大结局</span><a href="/tv/465.html" target="_blank">青鸟之家</a></li> 
+        <li><span>大结局</span><a href="/tv/456.html" target="_blank">封神英雄榜2</a></li> 
+        <li><span>大结局</span><a href="/tv/462.html" target="_blank">冲出迷雾</a></li> 
+       </ul> 
+       <ul> 
+        <li><span>大结局</span><a href="detail_movie.html" target="_blank">虎妈猫爸</a></li>
+        <li><span>大结局</span><a href="/tv/472.html" target="_blank">听到传闻</a></li> 
+        <li><span>大结局</span><a href="/tv/461.html" target="_blank">嘿！真不是闹着玩的</a></li> 
+        <li><span>大结局</span><a href="/tv/429.html" target="_blank">相爱穿梭千年</a></li> 
+        <li><span>大结局</span><a href="/tv/405.html" target="_blank">倩女喜相逢</a></li> 
+        <li><span>大结局</span><a href="/tv/400.html" target="_blank">极品新娘</a></li> 
+        <li><span>完结</span><a href="/tv/396.html" target="_blank">行尸走肉第五季</a></li> 
+        <li><span>大结局</span><a href="index.html" target="_blank">医馆笑传</a></li> 
+        <li><span>大结局</span><a href="/tv/189.html" target="_blank">治愈者/Healer</a></li> 
+        <li><span>大结局</span><a href="/tv/177.html" target="_blank">Mr.Back</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <!--/shot--> 
+     <div class="a300"> 
+      <script src="../static/js/thea3.js"></script>
+     </div> 
+     <div class="a300"> 
+      <script src="../static/js/thea6.js"></script>
+     </div> 
+     <script>jQuery(".jq-side .shot").slide({ titCell:"dd",mainCell:".bd",delayTime:10 });</script> 
+    </div> 
+    <!--/jq-side--> 
+   </div> 
+   <!--/endpage--> 
+  </div> 
+  <!--/footer--> 
+  <div id="footer"> 
+   <div class="help"> 
+    <div class="w"> 
+     <ul> 
+      <li> <b>电视节目指南</b> <p><a href="javascript:;" rel="nofollow">正在播出</a></p><p><a href="javascript:;" rel="nofollow">热门节目</a></p><p><a href="javascript:;" rel="nofollow">分类预告</a></p><p><a href="javascript:;" rel="nofollow">一周节目指南</a></p> </li> 
+      <li> <b>相关推荐</b> <p><a href="javascript:;" rel="nofollow">图片写真</a></p><p><a href="javascript:;" rel="nofollow">影评/短评</a></p><p><a href="javascript:;" rel="nofollow">剧情</a></p><p><a href="javascript:;" rel="nofollow">预告片</a></p> </li> 
+      <li> <b>关于我们</b> <p><a href="about.html" rel="nofollow">关于我们</a></p><p><a href="map.html">站点地图</a></p><p><a href="/hz.html" rel="nofollow">站长合作</a></p><p><a href="/contact.html" rel="nofollow">联系我们</a></p> </li> 
+      <li> <b>帮助中心</b> <p><a href="javascript:;" rel="nofollow">站长工具</a></p><p><a href="/help.html" rel="nofollow">帮助说明</a></p><p><a href="javascript:;" rel="nofollow">讨论区</a></p> </li> 
+      <li class="wx"> <b>关注微信</b> <p class="wxcode"><i></i></p><p>扫描二维码 下载客户端</p> </li> 
+      <li class="wb"> <b>关注微博</b> <p><a href="javascript:;" rel="nofollow">新浪微博</a></p><p><a href="javascript:;" rel="nofollow">腾讯微博</a></p> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <!--/link--> 
+   <div class="foot"> 
+    <p>Copyright &copy; 2014-2015 爱影评 www.aiyingping.com All rights reserved</p> 
+    <p>湘ICP备14016065号-2</p> 
+    <script type="text/javascript">
+    
+
+</script> 
+    <script type="text/javascript">
+    
+
+</script> 
+   </div> 
+  </div> 
+  <script src="/e/extend/comment/?classid=1&amp;id=473"></script> 
+  <script src="/e/public/ViewClick/ViewMore.php?classid=1&amp;id=473&amp;onclick=1&amp;pfen=1&amp;diggtop=1&amp;addclick=1"></script>  
+ </body>
+</html>
